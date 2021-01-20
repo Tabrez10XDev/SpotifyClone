@@ -1,9 +1,11 @@
-package com.example.spotifyclone
+package com.example.spotifyclone.data.remote
 
-import com.example.spotifyclone.CONSTANTS.SONG_COLLECTION
+import com.example.spotifyclone.util.CONSTANTS.SONG_COLLECTION
+import com.example.spotifyclone.data.entities.Songs
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
+import java.util.Collections.emptyList
 
 class MusicDatabase {
 

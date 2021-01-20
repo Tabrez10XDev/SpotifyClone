@@ -1,4 +1,4 @@
-package com.example.spotifyclone
+package com.example.spotifyclone.data.entities
 
 data class Songs(
         val mediaID : Int,

@@ -1,9 +1,10 @@
-package com.example.spotifyclone
+package com.example.spotifyclone.di
 
 import android.content.Context
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.example.spotifyclone.R
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

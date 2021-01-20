@@ -1,4 +1,4 @@
-package com.example.spotifyclone
+package com.example.spotifyclone.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
