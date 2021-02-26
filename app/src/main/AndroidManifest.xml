@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.spotifyclone">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".app.SpotifyCloneApplication"
         android:allowBackup="true"
@@ -10,8 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpotifyClone">
+        <service android:name=".exoplayer.MusicService">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService"/>
+            </intent-filter>
+        </service>
         <activity android:name=".app.SpotifyClone"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/Theme.SpotifyClone">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
