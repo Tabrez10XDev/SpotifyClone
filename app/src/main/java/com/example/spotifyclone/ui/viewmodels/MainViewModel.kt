@@ -59,14 +59,26 @@ class MainViewModel @ViewModelInject constructor(
         musicServiceConnection.transportControls.seekTo(pos)
     }
 
-    fun playOrToggleSong(mediaItem : Song, toggle : Boolean = false) {
+    fun playOrToggleSong(mediaItem : Song, toggle : Boolean) {
         val isPrepared = playbackState.value?.isPrepared ?: false
+        Log.d("Lowj",toggle.toString())
+
         if(isPrepared && mediaItem.mediaID ==
                 currPlayingSong?.value?.getString(METADATA_KEY_MEDIA_ID)){
             playbackState?.value?.let { playbackState->
                 when{
-                    playbackState.isPlaying-> if(toggle) musicServiceConnection.transportControls.pause()
-                    playbackState.isPlayEnabled -> musicServiceConnection.transportControls.play()
+                    playbackState.isPlaying-> {
+                        Log.d("Lowj", "isPlaying")
+
+                        if (toggle) {
+                            musicServiceConnection.transportControls.pause()
+
+                        } else Unit
+                    }
+                    playbackState.isPlayEnabled -> {
+                        musicServiceConnection.transportControls.play()
+
+                    }
                     else -> Unit
                 }
             }
