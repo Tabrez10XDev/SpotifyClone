@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import com.example.spotifyclone.R
 import kotlinx.android.synthetic.main.swipe_item.view.*
 
-class SwipeSongAdapter : BaseSongAdapter(R.layout.list_view) {
+class SwipeSongAdapter : BaseSongAdapter(R.layout.swipe_item) {
 
     override var differ = AsyncListDiffer(this, diffCallback)
 
