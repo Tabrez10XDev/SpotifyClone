@@ -10,18 +10,10 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spotifyclone.R
 import com.example.spotifyclone.adapters.SongAdapter
-import com.example.spotifyclone.data.entities.Songs
-import com.example.spotifyclone.data.remote.MusicDatabase
 import com.example.spotifyclone.ui.viewmodels.MainViewModel
-import com.example.spotifyclone.util.CONSTANTS
 import com.example.spotifyclone.util.Status
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @AndroidEntryPoint

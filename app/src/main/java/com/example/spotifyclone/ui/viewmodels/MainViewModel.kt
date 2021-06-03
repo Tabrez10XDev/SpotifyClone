@@ -1,13 +1,12 @@
 package com.example.spotifyclone.ui.viewmodels
 
-import android.media.browse.MediaBrowser
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_ID
 import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spotifyclone.data.entities.Songs
+import com.example.spotifyclone.data.entities.Song
 import com.example.spotifyclone.exoplayer.*
 import com.example.spotifyclone.util.CONSTANTS.MEDIA_ROOT_ID
 import com.example.spotifyclone.util.Resource
@@ -17,7 +16,7 @@ class MainViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
 
-    var mediaItems = MutableLiveData<Resource<List<Songs>>>()
+    var mediaItems = MutableLiveData<Resource<List<Song>>>()
         private set
 
     var isConnected = musicServiceConnection.isConnected
@@ -32,7 +31,7 @@ class MainViewModel @ViewModelInject constructor(
             override fun onChildrenLoaded(parentId: String, children: MutableList<MediaBrowserCompat.MediaItem>) {
                 super.onChildrenLoaded(parentId, children)
                 val items = children.map {
-                    Songs(
+                    Song(
                             it.mediaId!!,
                             it.description.title.toString(),
                             it.description.subtitle.toString(),
@@ -60,7 +59,7 @@ class MainViewModel @ViewModelInject constructor(
         musicServiceConnection.transportControls.seekTo(pos)
     }
 
-    fun playOrToggleSong(mediaItem : Songs, toggle : Boolean = false) {
+    fun playOrToggleSong(mediaItem : Song, toggle : Boolean = false) {
         val isPrepared = playbackState.value?.isPrepared ?: false
         if(isPrepared && mediaItem.mediaID ==
                 currPlayingSong?.value?.getString(METADATA_KEY_MEDIA_ID)){

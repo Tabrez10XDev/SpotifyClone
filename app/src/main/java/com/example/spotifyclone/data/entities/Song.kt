@@ -1,6 +1,6 @@
 package com.example.spotifyclone.data.entities
 
-data class Songs(
+data class Song(
         val mediaID : String = "",
         val subtitle : String = "",
         val title : String = "",
