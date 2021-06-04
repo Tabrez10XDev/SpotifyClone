@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.RequestManager
 import com.example.spotifyclone.R
@@ -61,6 +63,32 @@ class SpotifyClone : AppCompatActivity() {
             }
         }
 
+        swipeSongAdapter.setItemClickListener {
+            navHostFragment.findNavController().navigate(
+                    R.id.globalActionToSongFragment
+            )
+        }
+
+        navHostFragment.findNavController().addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id){
+                R.id.songFragment -> hideBottomBar()
+                R.id.homeFragment -> showBottomBar()
+                else -> showBottomBar()
+            }
+        }
+
+    }
+
+    private fun hideBottomBar(){
+        ivPlayPause.isVisible = false
+        ivCurSongImage.isVisible = false
+        vpSong.isVisible = false
+    }
+
+    private fun showBottomBar(){
+        ivPlayPause.isVisible = true
+        ivCurSongImage.isVisible = true
+        vpSong.isVisible = true
     }
 
     fun switchViewPagerToCurrentSong(song: Song){
