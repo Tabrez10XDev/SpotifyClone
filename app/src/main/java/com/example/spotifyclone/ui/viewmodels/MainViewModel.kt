@@ -15,7 +15,6 @@ class MainViewModel @ViewModelInject constructor(
     private val musicServiceConnection: MusicServiceConnection
 ) : ViewModel() {
 
-
     var mediaItems = MutableLiveData<Resource<List<Song>>>()
         private set
 
